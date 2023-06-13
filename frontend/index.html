@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="container pt-3 pb-3">
+      <h3>Форма добавления нового студента</h3>
+      <form action="" class="mb-3" id="add-form">
+        <div class="mb-4">
+          <input type="text" class="new-class mb-3" id="name-inp" placeholder="Имя" required>
+          <input type="text" class="new-class mb-3" id="lastname-inp" placeholder="Фамилия" required>
+          <input type="text" class="new-class mb-3" id="surname-inp" placeholder="Отчество" required>
+          <input type="date" class="new-class mb-3" id="birthday-inp" required>
+          <input type="text" class="new-class mb-3" id="faculty-inp" placeholder="Факультет" required>
+          <input type="number" class="new-class mb-3" id="studyStart-inp" placeholder="Дата поступления" required>
+        </div>
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <div id="error-messages"></div>
+
+      </form>
+
+      <form action="#" id="filter-form" class="mb-3">
+        <h3>Панель фильтрации</h3>
+        <input id="filter-form_fio-inp" class="new-class mb-3" type="text" placeholder=" Введите ФИО">
+        <input id="filter-form_faculty-inp" class="new-class mb-3" type="text" placeholder="Введите название факультета">
+      </form>
+
+
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th id="sort_fio">ФИО</th>
+            <th id="sort_birthday">Дата рождения</th>
+            <th id="sort_faculty">Факультет</th>
+            <th id="sort_study">Год поступления</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="stud-table">
+
+        </tbody>
+      </table>
+    </div>
+
+    <script defer type="module" src="./main.js"></script>
+  </body>
+</html>
