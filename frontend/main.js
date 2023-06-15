@@ -20,12 +20,14 @@ async function serverGetStudent(){
 }
 
 async function serverDeleteStudent(id){
-    let response = await fetch(SERVER_URL + '/api/students/' + id,{
+     let response = await fetch(`http://localhost:3000/api/students/${id}`, {
         method: 'DELETE',
     })
     let data = await response.json()
     return data;
 }
+
+
 
 let serverData = await serverGetStudent()
 
@@ -75,11 +77,16 @@ function $getNewStudentTR(studObj) {
     $tdFaculty.textContent = studObj.faculty
     $tdStudyStart.textContent = formatCourse(studObj.studyStart)
 
-    $btnDelete.addEventListener('click', async function () {
-        await serverDeleteStudent(studObj.id)
-        $tr.remove()
-        location.reload();
-    })
+
+  $btnDelete.addEventListener('click', async function () {
+  await serverDeleteStudent(studObj.id);
+  const index = listStudents.findIndex(student => student.id === studObj.id);
+  if (index > -1) {
+    listStudents.splice(index, 1);
+  }
+  $tr.remove();
+  render(listStudents)
+});
 
     $tdDelete.append($btnDelete)
 
@@ -130,6 +137,7 @@ function render(arr) {
     $studTable.append($newTr)
     }
 }
+
 render(listStudents)
 
 document.getElementById('add-form').addEventListener('submit', async function (e) {
